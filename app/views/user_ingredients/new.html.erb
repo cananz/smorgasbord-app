@@ -1,0 +1,12 @@
+#user kitchen form
+
+  <%= form_with model: @user do |f| %>
+    <div>
+
+      <p><%= f.collection_check_boxes(:ingredient_id, Ingredient.all, :id, :name) %></p>
+    </div>
+    <br>
+
+
+    <%= f.submit %>
+    <% end %>

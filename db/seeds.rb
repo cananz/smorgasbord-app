@@ -10,8 +10,8 @@ Recipe.destroy_all
 Ingredient.destroy_all
 
 #USER
-User.find_or_create_by(first_name: "Marisa", last_name: "Canan")
-User.find_or_create_by(first_name: "Pete", last_name: "Hanner")
+User.find_or_create_by(id: 1, first_name: "Marisa", last_name: "Canan")
+User.find_or_create_by(id: 2, first_name: "Pete", last_name: "Hanner")
 
 
 # RECIPES

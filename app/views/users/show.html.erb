@@ -1,6 +1,17 @@
-<!-- <h1>user show</h1> -->
+<h1><%= @user.first_name %></h1>
 
 <!-- <p>View of current kitchen</p> -->
+  <% if @user.ingredients.count > 0 %>
+  <ul>
+    <% @user.ingredients.each do |ing| %>
+      <li><%= ing.name %></li>
+    <% end %>
+  </ul>
+    <p><%= link_to  %></p>
+  <% else %>
+    <p>Time to hit the grocery store! Your kitchen is empty.</p>
+  <% end %>
+  <p><%= link_to "Need to update your kitchen?", edit_user_path %>.</p>
 
 <!-- <p>link_to create or update kitchen </p> -->
 
