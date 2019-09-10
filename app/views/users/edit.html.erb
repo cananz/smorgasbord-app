@@ -1,13 +1,10 @@
-<h1><%= "#{@user.first_name}'s Kitchen" %></h1>
+<h1><%= "#{current_user.first_name}'s Kitchen" %></h1>
 
-<%= form_for @user do |f| %>
+<%= form_for current_user, action: 'patch' do |f| %>
   <%= f.collection_check_boxes(:ingredient_ids, Ingredient.category_sort, :id, :name) do |ing| %>
     <div>
       <%= ing.check_box %><%= ing.label { ing.text } %>
     </div>
-    <!-- <div>
-
-    </div> -->
   <% end %>
   <br>
   <%= f.submit %>

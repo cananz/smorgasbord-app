@@ -11,8 +11,6 @@
   <%= link_to "See this recipe", @recipe.url, target: :_blank %>
 </div>
 
-<% if params[:user] %>
-  <div>
-    <%= link_to "Check out some other recipes", recipes_path(user: params[:user]) %>
-  </div>
-<% end %>
+<div>
+  <%= link_to "Check out some other recipes", recipes_path %>
+</div>

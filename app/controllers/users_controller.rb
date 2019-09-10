@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, except: [:new, :create]
+
   def new
   end
 
@@ -9,18 +11,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = current_user
     kitchen = selected(user_params[:ingredient_ids])
-    @user.ingredients = Ingredient.find(kitchen)
-    redirect_to user_path(@user)
+    current_user.ingredients = Ingredient.find(kitchen)
+    redirect_to user_path(current_user)
   end
 
   private

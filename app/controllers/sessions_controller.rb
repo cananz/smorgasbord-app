@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     # create new session based on existing user
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
-      session['user'] = @user.username
+      session[:username] = @user.username
       redirect_to user_path(@user)
     else
       @error = "Invalid username or password"
@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # logout by destroying session user
+    session.delete(:username)
+    redirect_to home_path
   end
 end

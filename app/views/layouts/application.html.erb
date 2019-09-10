@@ -10,6 +10,15 @@
 
   <body>
     <h1>Smörgåsbord</h1>
+    <% if session[:username] %>
+      <%= form_tag logout_path, method: 'delete' do %>
+      <div>
+        <p>Welcome, <%= current_user.first_name %></p>
+      </div>
+      <%= submit_tag "Logout" %>
+      <% end %>
+    <% end %>
+
     <hr>
     <%= yield %>
   </body>
