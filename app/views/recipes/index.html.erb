@@ -4,6 +4,8 @@
 
 <ul>
   <% @recipes.each do |r| %>
-    <li><%= link_to r[:recipe][:name], recipe_path(r[:recipe]) %> &ensp;||&ensp; You're missing <%= r[:missing] %> ingredients.</li>
+    <li><%= link_to r[:recipe][:name], recipe_path(r[:recipe], user: @user.id) %> &ensp;||&ensp; You're missing <%= pluralize(r[:missing], 'ingredient') %>.</li>
   <% end %>
 </ul>
+
+<%= link_to "Head back to the kitchen", user_path(@user) %>
