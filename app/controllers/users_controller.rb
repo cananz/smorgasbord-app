@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  def new
+  end
+
+  def create
+    # create new user from form
+    # set session user to this new user
+    # redirect to show page
+  end
 
   def show
     @user = User.find(params[:id])
@@ -23,6 +31,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:id, ingredient_ids:[], :username, :first_name, :last_name, :password)
+    params.require(:user).permit(ingredient_ids:[])
   end
 end
