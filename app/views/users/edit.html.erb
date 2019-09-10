@@ -1,14 +1,11 @@
 <h1><%= "#{@user.first_name}'s Kitchen" %></h1>
 
-  <%= form_with model: @user do |f| %>
-  <div>
-
-    <p><%= f.collection_check_boxes(:ingredients, Ingredient.all, :id, :name) %></p>
-
-  </div>
-
-  <br>
-
-
-  <%= f.submit %>
+<%= form_for @user do |f| %>
+  <%= f.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) do |i| %>
+    <div>
+      <%= i.check_box %><%= i.label { i.text } %>
+    </div>
   <% end %>
+  <br>
+  <%= f.submit %>
+<% end %>
