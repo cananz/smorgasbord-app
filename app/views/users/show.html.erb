@@ -1,17 +1,25 @@
-<h1><%= "#{@user.first_name}'s Kitchen" %></h1>
+<h2><%= "#{@user.first_name}'s Kitchen" %></h2>
 
-<!-- <p>View of current kitchen</p> -->
-  <% if @user.ingredients.count > 0 %>
+<!-- List all of user's current items -->
+<% if @user.ingredients.count > 0 %>
   <ul>
     <% @user.ingredients.each do |ing| %>
       <li><%= ing.name %></li>
     <% end %>
   </ul>
-  <% else %>
-    <p>Time to hit the grocery store! Your kitchen is empty.</p>
-  <% end %>
+<!-- If user has no items -->
+<% else %>
+  <p>Time to hit the grocery store! Your kitchen is empty.</p>
+<% end %>
+
+<!-- Link to edit current items -->
+<div>
   <p><%= link_to "Need to update your kitchen?", edit_user_path %>.</p>
+</div>
 
-<!-- <p>link_to create or update kitchen </p> -->
+<!-- Link to show matching recipes -->
+<!-- REPLACE USER PATH WITH APPROPRIATE ONE ONCE ROUTE IS DETERMINED -->
 
-<!-- <p>link to find a recipe</p> -->
+<div>
+  <p><%= link_to "Show me what's for dinner", user_path(@user) %></p>
+</div>
