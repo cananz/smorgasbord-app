@@ -1,4 +1,4 @@
-<h2><%= "#{@user.first_name}'s Kitchen" %></h2>
+<h1><%= "#{@user.first_name}'s Kitchen" %></h1>
 
 <%= form_for @user do |f| %>
   <%= f.collection_check_boxes(:ingredient_ids, Ingredient.category_sort, :id, :name) do |ing| %>
