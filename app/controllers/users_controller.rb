@@ -11,15 +11,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
   end
 
   def edit
-    # @user = current_user
   end
 
   def update
-    # @user = current_user
     kitchen = selected(user_params[:ingredient_ids])
     current_user.ingredients = Ingredient.find(kitchen)
     redirect_to user_path(current_user)
