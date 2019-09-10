@@ -4,7 +4,7 @@ class Ingredient < ApplicationRecord
   has_many :recipe_ingredients
   has_many :recipes, through: :recipe_ingredients
 
-  validates :category, inclusion: {in: %w()}
+  # validates :category, inclusion: {in: %w()}
 
 
 
@@ -13,7 +13,7 @@ class Ingredient < ApplicationRecord
   end
 
   def self.categories
-    Ingredient.all.select {|ing| ing.category.unique?}
+    Ingredient.all.map {|ing| ing.category}.uniq
   end
 
   def self.category_sort
@@ -23,7 +23,7 @@ class Ingredient < ApplicationRecord
       #each cat name set to a key w/ value = corresponding ingredient objects
       sorted[cat] = Ingredient.category(cat)
     end
-    sorted
+    sorted.values.flatten
   end
 
 end

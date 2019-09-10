@@ -1,7 +1,7 @@
 <h2><%= "#{@user.first_name}'s Kitchen" %></h2>
 
 <%= form_for @user do |f| %>
-  <%= f.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) do |ing| %>
+  <%= f.collection_check_boxes(:ingredient_ids, Ingredient.category_sort, :id, :name) do |ing| %>
     <div>
       <%= ing.check_box %><%= ing.label { ing.text } %>
     </div>
