@@ -5,9 +5,24 @@ class KitchensController < ApplicationController
 
   def create
     # overwrite current_user's Kitchen associations with form selections
-    current_user.kitchens = Ingredient.find(selected(params[:kitchen][:ingredient_id]))
-    byebug
+    current_user.kitchens.destroy_all
+
+    new_kitchen_params.each do |ing|
+    # byebug
+      current_user.kitchens << Kitchen.create(ingredient_id: ing)
+    # byebug
+  end
     redirect_to user_path(current_user)
+  end
+
+  def edit
+    @kitchens = current_user.kitchens
+    byebug
+    @user = current_user
+  end
+
+  def update
+
   end
 end
 
@@ -15,4 +30,8 @@ private
 
 def kitchen_params
   params.require(:kitchen).permit(ingredient_ids:[])
+end
+
+def new_kitchen_params
+  selected(params[:kitchen][:ingredient_id])
 end
