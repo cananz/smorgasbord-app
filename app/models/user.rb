@@ -10,4 +10,11 @@ class User < ApplicationRecord
   def name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def in_kitchen
+    # return all Ingredients associated w user through Kitchen table
+    # Kitchen.all.find_all{ || }
+    ing_ids = self.kitchens.pluck(:ingredient_id)
+    ing_ids.map { |id| Ingredient.where(id: id) }
+  end
 end
