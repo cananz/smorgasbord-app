@@ -2,12 +2,23 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
   def new
+
+    @user = User.new
   end
 
   def create
-    # create new user from form
-    # set session user to this new user
-    # redirect to show page
+
+    @user = User.new
+
+    if @user.update(new_user_params)
+
+      session[:username] = @user.username
+
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
+
   end
 
   def show
@@ -31,5 +42,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(ingredient_ids:[])
+  end
+
+  def new_user_params
+    params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation)
   end
 end
