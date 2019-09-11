@@ -1,6 +1,8 @@
 class Ingredient < ApplicationRecord
-  has_many :user_ingredients
-  has_many :users, through: :user_ingredients
+  has_many :kitchens
+  has_many :restrictions
+  has_many :users, through: :kitchens
+  has_many :users, through: :restrictions
   has_many :recipe_ingredients
   has_many :recipes, through: :recipe_ingredients
 

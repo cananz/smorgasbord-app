@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  has_many :user_ingredients
-  has_many :ingredients, through: :user_ingredients
+  has_many :kitchens
+  has_many :ingredients, through: :kitchens
+  has_many :ingredients, through: :restrictions
+  has_many :restrictions
+
   has_secure_password
   validates :username, presence: true, uniqueness: {case_sensitive: false}
 
