@@ -15,6 +15,6 @@ class User < ApplicationRecord
     # return all Ingredients associated w user through Kitchen table
     # Kitchen.all.find_all{ || }
     ing_ids = self.kitchens.pluck(:ingredient_id)
-    ing_ids.map { |id| Ingredient.where(id: id) }
+    ing_ids.map { |ing_id| Ingredient.find(ing_id) }
   end
 end

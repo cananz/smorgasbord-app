@@ -8,6 +8,9 @@
 User.destroy_all
 Recipe.destroy_all
 Ingredient.destroy_all
+Kitchen.destroy_all
+Restriction.destroy_all
+RecipeIngredient.destroy_all
 
 #USER
 User.create(id: 1, first_name: "Marisa", last_name: "Canan", username: "mczizzzle", password: "marisa")
