@@ -2,23 +2,17 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
   def new
-
     @user = User.new
   end
 
   def create
-
     @user = User.new
-
     if @user.update(new_user_params)
-
       session[:username] = @user.username
-
       redirect_to user_path(@user)
     else
       render :new
     end
-
   end
 
   def show
