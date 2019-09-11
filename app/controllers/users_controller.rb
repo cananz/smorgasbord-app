@@ -29,11 +29,6 @@ class UsersController < ApplicationController
 
   private
 
-  def selected(arr)
-    arr = arr[1..arr.length]
-    arr.map { |e| e.to_i }
-  end
-
   def user_params
     params.require(:user).permit(ingredient_ids:[])
   end

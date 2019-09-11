@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to home_path unless !!current_user
   end
+
+  def selected(arr)
+    arr = arr[1..arr.length]
+    arr.map { |e| e.to_i }
+  end
 end
