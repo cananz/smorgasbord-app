@@ -3,8 +3,8 @@
 <!-- List all of user's current items -->
 <% if current_user.ingredients.count > 0 %>
   <ul>
-    <% current_user.ingredients.each do |ing| %>
-      <li><%= ing.name %></li>
+    <% current_user.user_ingredients.each do |ing| %>
+      <li><%= ing.ingredient.name %> -- <%= ing.relationship %></li>
     <% end %>
   </ul>
 <!-- If user has no items -->

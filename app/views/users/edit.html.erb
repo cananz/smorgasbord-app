@@ -2,10 +2,22 @@
 
 <%= form_for current_user, action: 'patch' do |f| %>
   <%= f.collection_check_boxes(:ingredient_ids, Ingredient.category_sort, :id, :name) do |ing| %>
+
     <div>
-      <%= ing.check_box %><%= ing.label { ing.text } %>
+
+      <%= ing.check_box checked: current_user.kitchen.include?(ing.object) %><%= ing.label { ing.text } %>
     </div>
   <% end %>
   <br>
   <%= f.submit %>
+<% end %>
+
+
+
+<% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
 <% end %>

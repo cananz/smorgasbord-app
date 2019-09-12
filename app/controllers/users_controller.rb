@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
   def new
+    #get new account form
     @user = User.new
   end
 
   def create
+    #post create new account
     @user = User.new
     if @user.update(new_user_params)
       session[:username] = @user.username
@@ -16,14 +18,30 @@ class UsersController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
+    @user = current_user
   end
 
   def update
-    kitchen = selected(user_params[:ingredient_ids])
-    current_user.ingredients = Ingredient.find(kitchen)
+
+    old = current_user.user_ingredients.where(relationship: "in_kitchen")
+    old.destroy_all
+    byebug
+    add = selected(user_params[:ingredient_ids])
+    #loop over ing_ids array and create user_ingredient instance for each (with self and corresponding relationship)
+
+    add.each do |ing_id|
+      UserIngredient.create(
+        user: current_user,
+        ingredient_id: ing_id,
+        relationship: "in_kitchen"
+      )
+    end
+    # byebug
+    # current_user.ingredients = Ingredient.find(kitchen)
     redirect_to user_path(current_user)
   end
 

@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+ # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -8,10 +8,12 @@
 User.destroy_all
 Recipe.destroy_all
 Ingredient.destroy_all
+UserIngredient.destroy_all
+
 
 #USER
-User.create(id: 1, first_name: "Marisa", last_name: "Canan", username: "mczizzzle", password: "marisa")
-User.create(id: 2, first_name: "Pete", last_name: "Hanner", username: "petey_pablo", password: "raiseup")
+m = User.create(id: 1, first_name: "Marisa", last_name: "Canan", username: "mczizzzle", password: "marisa")
+p = User.create(id: 2, first_name: "Pete", last_name: "Hanner", username: "petey_pablo", password: "raiseup")
 
 
 # RECIPES
@@ -75,3 +77,10 @@ chickpea_curry.ingredients = [chickpeas, onion, garlic, ginger, curry_powder, sp
 bac_parm_pasta.ingredients = [onion, pasta, spinach, parmesan, bacon, c_stock]
 pizzadilla.ingredients = [tortilla, mozzarella, bells, red_onion, tom_sauce, pepperoni, olives, mushrooms]
 turkey_burgers.ingredients = [ground_turkey, green_pepper, onion, m_jack, tomatoes, avocado]
+
+
+UserIngredient.create(user: m, ingredient: mint, relationship: "in_kitchen")
+UserIngredient.create(user: m, ingredient: salsa, relationship: "restricted")
+UserIngredient.create(user: p, ingredient: red_onion, relationship: "in_kitchen")
+UserIngredient.create(user: m, ingredient: mint, relationship: "restricted")
+UserIngredient.create(user: p, ingredient: mint, relationship: "restricted")
