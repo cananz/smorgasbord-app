@@ -16,8 +16,9 @@ class KitchensController < ApplicationController
   end
 
   def edit
+    # byebug
     @kitchens = current_user.kitchens
-    byebug
+
     @user = current_user
   end
 

@@ -14,7 +14,9 @@
 
 <!-- Link to edit current items -->
 <div>
-  <p><%= link_to "Need to update your kitchen?", edit_kitchen_path %>.</p>
+  <% if current_user.kitchens.count == 0 %><p><%= link_to "Stock your kitchen!", new_kitchen_path %>.</p>
+  <% else %><p><%= link_to "Need to update your kitchen?", edit_kitchen_path %>.</p>
+  <% end %>
 </div>
 
 <!-- Link to show matching recipes -->
