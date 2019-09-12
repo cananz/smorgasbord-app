@@ -21,15 +21,34 @@ class UsersController < ApplicationController
 
   end
 
-  def edit
+  def edit_restricted
+
     @user = current_user
   end
 
-  def update
+  def update_restricted
+    
+    old = current_user.user_ingredients.where(relationship: "restricted")
+    old.destroy_all
+    add = selected(user_params[:ingredient_ids])
+    add.each do |ing_id|
+      UserIngredient.create(
+        user: current_user,
+        ingredient_id: ing_id,
+        relationship: "restricted"
+      )
+    end
+    redirect_to user_path(current_user)
+  end
+
+  def edit_kitchen
+    @user = current_user
+  end
+
+  def update_kitchen
 
     old = current_user.user_ingredients.where(relationship: "in_kitchen")
     old.destroy_all
-    byebug
     add = selected(user_params[:ingredient_ids])
     #loop over ing_ids array and create user_ingredient instance for each (with self and corresponding relationship)
 

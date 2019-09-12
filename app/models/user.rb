@@ -13,4 +13,8 @@ class User < ApplicationRecord
     self.ingredients.merge(UserIngredient.where(relationship: "in_kitchen"))
   end
 
+  def restricted_ings
+    self.ingredients.merge(UserIngredient.where(relationship: "restricted"))
+  end
+
 end
