@@ -1,14 +1,13 @@
 <h1><%= "#{current_user.first_name}'s Dietary Restrictions" %></h1>
 
-
-<%= form_for current_user, url: edit_restricted_path, action: 'patch' do |f| %>
-
-<%= f.collection_check_boxes(:ingredient_ids, Ingredient.category_sort, :id, :name) do |ing| %>
-
-<div>
-
-  <%= ing.check_box checked: current_user.restricted_ings.include?(ing.object) %><%= ing.label { ing.text } %>
+<div class="ui form">
+  <%= form_for current_user, url: edit_restricted_path, action: 'patch' do |f| %>
+    <%= f.collection_check_boxes(:ingredient_ids, Ingredient.category_sort, :id, :name) do |ing| %>
+      <div class="ui checkbox">
+        <%= ing.check_box checked: current_user.restricted_ings.include?(ing.object) %><%= ing.label { ing.text } %>
+      </div><br>
+    <% end %>
+    <br>
+    <%= f.submit class:"ui blue button" %>
+  <% end %>
 </div>
-<% end %>
-<%= f.submit %>
-<% end %>

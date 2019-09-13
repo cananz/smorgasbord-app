@@ -1,4 +1,7 @@
 <!-- Form to create a new user -->
+<div class="padding">
+
+</div>
 <h2>Create Account</h2>
 
   <% if @user.errors.any? %>
@@ -28,7 +31,7 @@
         <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation %>
       </div>
-
-        <%= f.submit %>
+        <div class="padding"></div>
+        <%= f.submit class:"ui blue button" %>
 
       <% end %>

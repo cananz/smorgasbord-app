@@ -1,19 +1,20 @@
-<h1><%= "#{current_user.first_name}'s Kitchen" %></h1>
+<div class="kitchen-edit-header"><h1><%= "#{current_user.first_name}'s Kitchen" %></h1></div>
 
+<div class="ui form">
 
 <%= form_for current_user, url: edit_kitchen_path, action: 'patch' do |f| %>
 
 
   <%= f.collection_check_boxes(:ingredient_ids, Ingredient.category_sort, :id, :name) do |ing| %>
 
-    <div>
-
+    <div class="ui checkbox" >
       <%= ing.check_box checked: current_user.kitchen.include?(ing.object) %><%= ing.label { ing.text } %>
-    </div>
+    </div><br>
   <% end %>
   <br>
-  <%= f.submit %>
+  <div ><%= f.submit class:"ui blue button" %></div>
 <% end %>
+</div>
 
 
 

@@ -11,7 +11,7 @@ class Recipe < ApplicationRecord
         recipe_hash = {}
         recipe_hash[:recipe] = recipe
         # count number of recipe ingredients missing from user's kitchen
-        diff = recipe.ingredients - user.ingredients
+        diff = recipe.ingredients - user.kitchen
         recipe_hash[:missing] = diff.length
         final << recipe_hash
       end
@@ -28,7 +28,7 @@ class Recipe < ApplicationRecord
         recipe_hash = {}
         recipe_hash[:recipe] = recipe
         # count number of recipe ingredients missing from user's kitchen
-        diff = recipe.ingredients - user.ingredients
+        diff = recipe.ingredients - user.kitchen
         recipe_hash[:missing] = diff.length
         final << recipe_hash
     end

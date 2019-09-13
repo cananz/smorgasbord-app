@@ -1,9 +1,11 @@
 <h2>Recipes:</h2>
 
+<div class="ui link list">
 <ul>
   <% @recipes.each do |r| %>
-    <li><%= link_to r[:recipe][:name], recipe_path(r[:recipe]) %> &ensp;||&ensp; You're missing <%= pluralize(r[:missing], 'ingredient') %>.</li>
+    <li class="item"><%= link_to "#{r[:recipe][:name]} || You're missing #{pluralize(r[:missing], 'ingredient')}", recipe_path(r[:recipe]) %></li>
   <% end %>
 </ul>
+</div>
 
 <%= link_to "Head back to the kitchen", user_path(current_user) %>

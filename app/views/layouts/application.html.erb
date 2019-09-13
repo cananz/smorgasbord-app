@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Smörgåsbord</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Smörgåsbord</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <link rel="stylesheet" href="app/assets/stylesheets/application.css">
+  <link rel="stylesheet" href="app/assets/stylesheets/semantic.min.css">
+</head>
 
-  <body>
-    <h1>Smörgåsbord</h1>
-    <% if current_user %>
-      <%= form_tag logout_path, method: 'delete' do %>
-      <div>
-        <p>Welcome, <%= current_user.first_name %></p>
-      </div>
-      <%= submit_tag "Logout" %>
-      <% end %>
+<body>
+  <div class="site-header">
+
+    <h1><div class="header-title">Smörgåsbord</div></h1>
+    <% if !current_user %>
+    <h4><div class="sub-header">It's "what's for dinner?"</div></h4>
     <% end %>
 
-    <hr>
+    <% if current_user %>
+      <%= form_tag logout_path, method: 'delete', class: 'welcome-prompt' do %>
+        <div class="header-div">
+          <p>Welcome, <%= current_user.first_name %></p>
+        </div>
+        <%= submit_tag "Logout", class: "ui compact inverted yellow button", id: "logout-button" %>
+      <% end %>
+      <% else %>
+      <div class="welcome-prompt">
+      <div class="welcome-prompt">
+        </div>
+        </div>
+    <% end %>
+    <!-- <div class="head-divider">
+      <hr>
+    </div> -->
+  </div>
+
+  <div class="site-body">
+    <img src="https://vignette.wikia.nocookie.net/muppet/images/c/cd/Swed_chef_juggling.png/revision/latest?cb=20110325162545" class="bg-image">
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>
