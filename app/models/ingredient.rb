@@ -4,10 +4,6 @@ class Ingredient < ApplicationRecord
   has_many :recipe_ingredients
   has_many :recipes, through: :recipe_ingredients
 
-  # validates :category, inclusion: {in: %w()}
-
-
-
   def self.category(cat)
     Ingredient.all.select {|ing| ing.category == cat}
   end
