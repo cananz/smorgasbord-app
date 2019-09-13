@@ -18,7 +18,6 @@ class Recipe < ApplicationRecord
     end
     # return sorted array
     final = final.sort_by { |recipe| recipe[:missing] }
-    final
   end
 
   def self.user_include_restrictions(user)
