@@ -1,0 +1,28 @@
+<p>Edit User</p>
+<!-- Form to edit a user profile -->
+<h2>Edit Profile</h2>
+
+  <% if @user.errors.any? %>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+  <% end %>
+
+    <%= form_for @user, action: 'update' do |f| %>
+      <div>
+        <%= f.label :username %>
+          <%= f.text_field :username %>
+      </div>
+  <br>
+      <div>
+        <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+        <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+      </div>
+  <br>
+        <%= f.submit %>
+
+      <% end %>
